@@ -2,6 +2,7 @@ package movieslibrary;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //import PdfPackage.PDFDemo;
@@ -24,7 +25,13 @@ public class MovieLibrary {
 									+ " 2. Make a question\n" 
 									+ " 3. Exit ");
 			System.out.print("\nMake a choice: ");
-			userInputMain = keyboard.nextInt();
+			try {
+				userInputMain = keyboard.nextInt();
+			} catch (InputMismatchException e) {
+				flushKeyboard(keyboard);
+				userInputMain = 0;
+			}
+			
 			switch(userInputMain){
 			case 1:
 				if (!dataSetManager.connect()) {
@@ -47,7 +54,12 @@ public class MovieLibrary {
 							+ " 6. Search by director\n" 
 							+ " 7. Back");
 					System.out.print("\nMake a choice: ");
-					userInputQuery = keyboard.nextInt();
+					try {
+						userInputQuery = keyboard.nextInt();
+					} catch (InputMismatchException e) {
+						flushKeyboard(keyboard);
+						userInputQuery = 0;
+					}
 					
 					QueryManager queryManager = new QueryManager(dataSetManager);
 					switch (userInputQuery) {
@@ -131,7 +143,7 @@ public class MovieLibrary {
 						}
 						break;
 					case 5:
-						System.out.print("\nEnter an actor: ");
+						System.out.print("\nEnter actor name: ");
 						flushKeyboard(keyboard);
 						String userInputActor = keyboard.nextLine();
 						HashMap<String, Movie> moviesOfActor = queryManager.searchByActor(userInputActor);
@@ -156,7 +168,7 @@ public class MovieLibrary {
 						}
 						break;
 					case 6:
-						System.out.print("\nEnter a director: ");
+						System.out.print("\nEnter  director name: ");
 						flushKeyboard(keyboard);
 						String userInputDirector = keyboard.nextLine();
 						HashMap<String, Movie> moviesOfDirector = queryManager.searchByDirector(userInputDirector);
@@ -182,14 +194,19 @@ public class MovieLibrary {
 					case 7:
 						break;
 					default:
-						System.out.println("Wrong choice. Try again!");
+						System.out.println("Wrong choice. Press any key to continue...");
+						flushKeyboard(keyboard);
+						keyboard.nextLine();
 						break;
 					}
 				}while (userInputQuery != 7 );
+				break;
 			case 3:
 				break;
 			default:
-				System.out.println("Wrong choice. Try again!");
+				System.out.println("Wrong choice. Press any key to continue...");
+				flushKeyboard(keyboard);
+				keyboard.nextLine();
 				break;
 			}
 		} while (userInputMain != 3);
@@ -207,11 +224,18 @@ public class MovieLibrary {
 				+ " 4. Pdf file\n"
 				+ " 5. Back");
 		System.out.print("\nMake a choice: ");
-		int userInput = keyboard.nextInt();
-		System.out.print("Enter file name (without extension): ");
-		keyboard.nextLine();
-		String userAnswerName = keyboard.nextLine();
-
+		int userInput = 0;
+		String userAnswerName = "";
+		try {
+			userInput = keyboard.nextInt();
+			System.out.print("Enter file name (without extension): ");
+			keyboard.nextLine();
+			userAnswerName = keyboard.nextLine();			
+		} catch (InputMismatchException e) {
+			flushKeyboard(keyboard);
+			userInput = 0;
+		}
+		
 		PresentationManager presentationManager = new PresentationManager();
 		// PDFDemo pdf = new PDFDemo();
 		switch(userInput){
@@ -230,12 +254,15 @@ public class MovieLibrary {
 			break;
 		case 5:
 			break;
+		default:
+			System.out.println("Wrong choice. Press any key to continue...");
+			keyboard.nextLine();
+			break;
 		}
 	}
 	
 	private static void flushKeyboard(Scanner keyboard) {
 		keyboard.nextLine();
 	}
-
 
 }
