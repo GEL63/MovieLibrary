@@ -1,2 +1,2 @@
 # MovieLibrary
-Our Movie Library Java Application
+Movie Library Java Application
