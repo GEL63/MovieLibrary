@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import pdfwriter.PDFWriter;
 import movieslibrary.DataSetManager;
 import movieslibrary.Movie;
 import movieslibrary.PresentationManager;
@@ -246,7 +247,6 @@ public class MovieLibrary {
 		String title = "Matches found : " + strList.size() + " movie(s)";
 		switch(userInput){
 		case 1:
-			
 			presentationManager.createTextFile(title, strList, PATH + "\\" + userAnswerName + ".txt");
 			break;
 		case 2:
@@ -256,7 +256,7 @@ public class MovieLibrary {
 			// TODO:create a Markdown file for the answer and give it a name
 			break;
 		case 4:
-			// pdf.createPdfFile(strList, userAnswerName + ".pdf");
+			presentationManager.createPdfFile(title, strList, PATH + "\\" + userAnswerName + ".pdf");
 			break;
 		case 5:
 			break;

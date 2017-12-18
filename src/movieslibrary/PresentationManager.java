@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.List;
 
+import pdfwriter.PDFWriter;
+
 public class PresentationManager{ 
 
 	public int createTextFile(String title, List<String> strList, String fileName) {
@@ -68,7 +70,6 @@ public class PresentationManager{
 		return 1;
 	}
 	
-	//header.concat("<meta http-equiv=\"Content-Type\" content\"text/html; charset=windows-1253\">");
 /*	public int createMarkdownFile(List<String> strList, String fileName, int lineWidth){
 	
 		 if (strList == null)
@@ -97,5 +98,12 @@ public class PresentationManager{
 	    return format(text, lineWidth, StrUtils.LINEEND);
 	    
 	}*/
+	
+	public int createPdfFile(String title, List<String> strList, String fileName){
+		PDFWriter pdfWriter= new PDFWriter();
+		pdfWriter.writePdfFile(title, strList, fileName);
+		return 1;
+		
+	}
 	
 }
