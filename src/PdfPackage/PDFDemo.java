@@ -1,4 +1,5 @@
 package PdfPackage;
+
 import java.io.FileOutputStream;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class PDFDemo {
+public class PDFWriter {
 	
 	public int createPdfFile(List<String> strList, String fileName){		
 		
@@ -21,23 +22,22 @@ public class PDFDemo {
 			pdfDoc.open();
 			
 			Font myfont = new Font();
-	        myfont.setStyle(Font.NORMAL);
-	        myfont.setSize(11);
+	        	myfont.setStyle(Font.NORMAL);
+	        	myfont.setSize(11);
 	        
-	        pdfDoc.add(new Paragraph("\n"));
-	        for (String i : strList) {
-	        	while(i != null){
-	        		Paragraph para = new Paragraph(i  + "\n", myfont);
-	                para.setAlignment(Element.ALIGN_JUSTIFIED);
-	                pdfDoc.add(para);
-	            }
-	        }       
-		}catch(Exception e){
-			
+	        	pdfDoc.add(new Paragraph("\n"));
+	        	for (String i : strList) {
+	        		while(i != null){
+	        			Paragraph para = new Paragraph(i  + "\n", myfont);
+	                		para.setAlignment(Element.ALIGN_JUSTIFIED);
+	                		pdfDoc.add(para);
+	            		}
+	        	}       
+		}catch(Exception e){	
 			return -1;			
 		}
 		 pdfDoc.close();
-	     writer.close();  	
+	     	writer.close();  	
 	        	
 		System.out.println("All good");
 		return 1;
