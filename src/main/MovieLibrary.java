@@ -1,9 +1,14 @@
-package movieslibrary;
+package main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import movieslibrary.DataSetManager;
+import movieslibrary.Movie;
+import movieslibrary.PresentationManager;
+import movieslibrary.QueryManager;
 
 //import PdfPackage.PDFDemo;
 
@@ -237,14 +242,15 @@ public class MovieLibrary {
 		}
 		
 		PresentationManager presentationManager = new PresentationManager();
-		// PDFDemo pdf = new PDFDemo();
+		//PDFDemo pdf = new PDFDemo();
+		String title = "Matches found : " + strList.size() + " movie(s)";
 		switch(userInput){
 		case 1:
 			
-			presentationManager.createTextFile(strList, PATH + "\\" + userAnswerName + ".txt");
+			presentationManager.createTextFile(title, strList, PATH + "\\" + userAnswerName + ".txt");
 			break;
 		case 2:
-			// TODO:create a html file for the answer and give it a name
+			presentationManager.createHtmlFile(title, strList, PATH + "\\" + userAnswerName + ".html");
 			break;
 		case 3:
 			// TODO:create a Markdown file for the answer and give it a name
@@ -266,3 +272,4 @@ public class MovieLibrary {
 	}
 
 }
+

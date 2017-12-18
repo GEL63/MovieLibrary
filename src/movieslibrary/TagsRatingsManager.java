@@ -28,6 +28,7 @@ public class TagsRatingsManager {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	public void readTags(){
 		
 		Scanner irTag = null;

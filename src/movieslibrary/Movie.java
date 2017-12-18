@@ -156,16 +156,23 @@ public class Movie {
 	
 	public String toString(){
 		
-		String str = "Movie Title: \t\t" + this.title;
-		if(this.date != null) str = str + "\n" + "Year of Production: \t" + this.date;
-		if(this.origin != null) str = str +	"\n" + "Country of Origin: \t" + this.origin.toString();
+		String str = this.title;
+		if(this.date != null) 
+			str = str + "\n" + this.date; 
+		else 
+			str = str + "\n";
+		if(this.origin != null) 
+			str = str +	"\n" + this.origin.toString(); 
+		else 
+			str = str + "\n";
 		if(this.directors != null){
-			str = str + "\n" + "Directors: \t\t";
+			str = str + "\n";
 			for(String directorId : directors.keySet()){
-				Director director = directors.get(directorId);
-				str = str + director.toString() + "\n";
+				str = str + directors.get(directorId).toString() + ", ";
 			}
 		}
+		else
+			str = str +"\n";
 		return str;
 	}
 }
