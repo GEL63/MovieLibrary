@@ -138,19 +138,19 @@ public class DataSetManager {
 		try {// for actor
 			irActor = new Scanner(new FileInputStream(path + "\\movie_actors.dat"));
 		} catch (FileNotFoundException e) {
-			System.out.println("Movies_actors.dat was not found!");
+			System.out.println("Movie_actors.dat was not found!");
 			System.exit(0);
 		}
 		try {// for director
 			irDirector = new Scanner(new FileInputStream(path + "\\movie_directors.dat"));
 		} catch (FileNotFoundException e) {
-			System.out.println("Movies_directors.dat was not found!");
+			System.out.println("Movie_directors.dat was not found!");
 			System.exit(0);
 		}
 		try {// for Location
 			irLocation = new Scanner(new FileInputStream(path + "\\movie_locations.dat"));
 		} catch (FileNotFoundException e) {
-			System.out.println("Movies_locations.dat was not found!");
+			System.out.println("Movie_locations.dat was not found!");
 			System.exit(0);
 		}
 		try {// for Countries
@@ -162,7 +162,7 @@ public class DataSetManager {
 		try {// for Genre
 			irGenre = new Scanner(new FileInputStream(path + "\\movie_genres.dat"));
 		} catch (FileNotFoundException e) {
-			System.out.println("Movies.dat was not found!");
+			System.out.println("Movie_Genres.dat was not found!");
 			System.exit(0);
 		}
 
