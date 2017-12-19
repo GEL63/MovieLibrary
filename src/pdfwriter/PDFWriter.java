@@ -16,8 +16,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class PDFWriter {
-	
+public class PDFWriter {		
+	private static Font catFont 	
 	public int writePdfFile(String title, List<String> strList, String fileName){		
 		
 		Document document = null;
