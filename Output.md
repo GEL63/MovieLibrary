@@ -8,6 +8,6 @@ Jumanji		|	2000	|France		| Stone Oliver
 ***
 This is a bullet list
 ---------------------
-*B1
-*B2
-*B3
+>B1
+>B2
+>B3
