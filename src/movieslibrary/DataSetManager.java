@@ -315,6 +315,10 @@ public class DataSetManager {
 
 	}
 
+	public void readExtraData(){
+		
+	}
+	
 	public HashMap<String, Movie> getMovies() {
 
 		return movies;

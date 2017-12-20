@@ -12,6 +12,7 @@ public class Movie {
 	private HashMap<String,Director> directors;	
 	private HashMap<String,FilmingLocation> locations;
 	private HashMap<String, Genre> genres;
+	private HashMap<String, Tag> tags;
 	
 	public Movie(String id, String title, String date){ //, int numOfComments){
 		
@@ -155,24 +156,48 @@ public class Movie {
 	}
 	
 	public String toString(){
-		
+
 		String str = this.title;
-		if(this.date != null) 
-			str = str + "\n" + this.date; 
-		else 
-			str = str + "\n";
-		if(this.origin != null) 
-			str = str +	"\n" + this.origin.toString(); 
-		else 
-			str = str + "\n";
-		if(this.directors != null){
+		if(this.date != null) {
+			str = str + "\n" + this.date; 			
+		}
+		else {
+			str = str + "\n";			
+		}
+		if(this.origin != null) {
+			str = str +	"\n" + this.origin.toString(); 			
+		}
+		else {
+			str = str + "\n";			
+		}
+
+		if(this.directors.size() != 0){
 			str = str + "\n";
 			for(String directorId : directors.keySet()){
 				str = str + directors.get(directorId).toString() + ", ";
 			}
+			str = str.substring(0, str.length()-2);
 		}
 		else
-			str = str +"\n";
+			str = str +"\nUnknown";
 		return str;
+	}
+
+	
+	public HashMap<String, Tag> getTags() {
+		return tags;
+	}
+
+	
+	public void setTags(HashMap<String, Tag> tags) {
+		this.tags = tags;
+	}
+	
+	public void addTag(Tag tag) {
+		tags.put(tag.getId(), tag);
+	}
+	
+	public void removeTag(String tagId) {
+		tags.remove(tagId);
 	}
 }

@@ -5,17 +5,13 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import pdfwriter.PDFWriter;
 import movieslibrary.DataSetManager;
 import movieslibrary.Movie;
 import movieslibrary.PresentationManager;
 import movieslibrary.QueryManager;
 
-//import PdfPackage.PDFDemo;
-
 public class MovieLibrary {
 
-	// static final String PATH = "C:\\Users\\User\\workspace\\MovieLibrary\\dataset";
 	static final String PATH = "C:\\Users\\toshiba\\workspace\\MovieLibrary\\DataSet";
 	static final boolean DEBUG = true;
 
@@ -149,7 +145,7 @@ public class MovieLibrary {
 						}
 						break;
 					case 5:
-						System.out.print("\nEnter actor name: ");
+						System.out.print("\nEnter name of actor: ");
 						flushKeyboard(keyboard);
 						String userInputActor = keyboard.nextLine();
 						HashMap<String, Movie> moviesOfActor = queryManager.searchByActor(userInputActor);
@@ -174,7 +170,7 @@ public class MovieLibrary {
 						}
 						break;
 					case 6:
-						System.out.print("\nEnter  director name: ");
+						System.out.print("\nEnter  name of director: ");
 						flushKeyboard(keyboard);
 						String userInputDirector = keyboard.nextLine();
 						HashMap<String, Movie> moviesOfDirector = queryManager.searchByDirector(userInputDirector);
@@ -243,8 +239,7 @@ public class MovieLibrary {
 		}
 		
 		PresentationManager presentationManager = new PresentationManager();
-		//PDFDemo pdf = new PDFDemo();
-		String title = "Matches found : " + strList.size() + " movie(s)";
+		String title = "Movie Library Application. Matches found : " + strList.size() + " movie(s)";
 		switch(userInput){
 		case 1:
 			presentationManager.createTextFile(title, strList, PATH + "\\" + userAnswerName + ".txt");
@@ -253,7 +248,7 @@ public class MovieLibrary {
 			presentationManager.createHtmlFile(title, strList, PATH + "\\" + userAnswerName + ".html");
 			break;
 		case 3:
-			// TODO:create a Markdown file for the answer and give it a name
+			presentationManager.createMarkdownFile(title, strList, PATH + "\\" + userAnswerName + ".md");
 			break;
 		case 4:
 			presentationManager.createPdfFile(title, strList, PATH + "\\" + userAnswerName + ".pdf");

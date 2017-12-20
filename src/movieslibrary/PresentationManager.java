@@ -70,34 +70,29 @@ public class PresentationManager{
 		return 1;
 	}
 	
-/*	public int createMarkdownFile(List<String> strList, String fileName, int lineWidth){
-	
-		 if (strList == null)
-		      return -1;      // Should we return an empty string?
+	public int createMarkdownFile(String title, List<String> strList, String fileName){
+		  
+		  try {
+		   PrintWriter outputStream = new PrintWriter(new FileOutputStream(fileName));
+		   outputStream.println(title);
+		   outputStream.println("-------------------");
+		   outputStream.println("Title | Year | Country | Director");
+		   outputStream.println("----- | ----- |-------- | --------");
+		   
+		   for(String str:strList){
 		    
-		    final String lineEndings;
-		    if ( strList.get(0).endsWith ("\r\n") )
-		      lineEndings = "\r\n";
-		    else if ( strList.get(0).endsWith ("\r") )
-		      lineEndings = "\r";
-		    else
-		      lineEndings = StrUtils.LINEEND.toString();
+		    String[] aStr = str.split("\n");
+		    outputStream.println(aStr[0] + " | " + aStr[1] + " | " + aStr[2] + " | " +aStr[3]);
 		    
-		    final StringBuilder buf = new StringBuilder();
-		    for (String line : strList) {
-		      buf.append (line);
-		      buf.append (' ');     // We can add extra spaces with impunity, and this
-		                            // makes sure our lines don't run together.
-		    }
-		    return format(buf.toString(), lineWidth, lineEndings);
-				
-	}
-	
-	public static String format ( final String text, final int lineWidth){
-		
-	    return format(text, lineWidth, StrUtils.LINEEND);
-	    
-	}*/
+		   }
+		   outputStream.close();
+		  } catch (FileNotFoundException e) {
+		   System.out.println("Problem opening files.");
+		   return -1;
+		  }
+		  return 1;
+		    
+		 }
 	
 	public int createPdfFile(String title, List<String> strList, String fileName){
 		PDFWriter pdfWriter= new PDFWriter();

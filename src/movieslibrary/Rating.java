@@ -1,12 +1,12 @@
 package movieslibrary;
 
-public class Rate {
+public class Rating {
 
 	private int date;
 	private String user;
 	private int rate;
 	
-	public Rate(int date,String user,int rate){
+	public Rating(int date,String user,int rate){
 		
 		this.setDate(date);
 		this.setUser(user);
